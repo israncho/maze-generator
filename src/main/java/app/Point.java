@@ -38,4 +38,12 @@ public class Point {
     public float getY() {
         return this.y;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Point comparing = (Point) o;
+        return this.x == comparing.x && this.y == comparing.y;
+    }
 }
