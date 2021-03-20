@@ -22,4 +22,10 @@ public class Main extends PApplet {
 
     }
 
+    @Override
+    public void keyPressed(){
+        if (key == 'q'|| key == 'Q')
+            exit();
+    }
+
 }
