@@ -14,8 +14,8 @@ public class Box {
     private boolean used;
     private boolean isSolution;
     /**
-     * indexes of each vertex: 0 = top Left. 1 = top Right. 2 = Lower left. 3 =
-     * Lower right
+     * indexes of each vertex: 0 = Top Left. 1 = Top Right. 2 = Lower Left. 3 =
+     * Lower Right
      */
     private Point[] verticesOfTheBox;
     /** tuple of integers representing position [x,y] */
@@ -31,7 +31,7 @@ public class Box {
     public Box(Point[] verticesOfTheBox, int[] position) {
         if (verticesOfTheBox.length != 4)
             throw new IllegalArgumentException("Wrong number of vertices.");
-        if (!isSquare(verticesOfTheBox))
+        if (!hasSquareForm(verticesOfTheBox))
             throw new IllegalArgumentException("Vertices don't form a square.");
         if (position.length != 2)
             throw new IllegalArgumentException("Wrong number of coordinates.");
@@ -135,8 +135,15 @@ public class Box {
         return true;
     }
 
-    private boolean isSquare(Point[] points) {
+    private boolean hasSquareForm(Point[] points) {
         return points[0].getY() == points[1].getY() && points[2].getY() == points[3].getY()
                 && points[0].getX() == points[2].getX() && points[1].getX() == points[3].getX();
+    }
+
+    @Override
+    public String toString() {
+        return "Position: (" + this.position[0] + "," + this.position[1] + "). Vertices: [ TL"
+                + this.verticesOfTheBox[0].toString() + ", TR" + this.verticesOfTheBox[1].toString() + ", LL"
+                + this.verticesOfTheBox[2].toString() + ", LR" + this.verticesOfTheBox[3].toString() + "]";
     }
 }

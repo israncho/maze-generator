@@ -46,4 +46,9 @@ public class Point {
         Point comparing = (Point) o;
         return this.x == comparing.x && this.y == comparing.y;
     }
+
+    @Override
+    public String toString() {
+        return "(" + this.x + "," + this.y + ")";
+    }
 }
