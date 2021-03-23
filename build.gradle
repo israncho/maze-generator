@@ -7,6 +7,12 @@ application {
 	mainClassName = 'app.Main'
 }
 
+run {
+	if (project.hasProperty("appArgs")) {
+        args Eval.me(appArgs)
+    }
+}
+
 repositories {
 	jcenter()
 }
