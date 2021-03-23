@@ -42,6 +42,15 @@ public class Maze {
         }
     }
 
+    /**
+     * Method that returns the grid of the maze.
+     * 
+     * @return Box[][] -- grid of the maze.
+     */
+    public Box[][] getGrid() {
+        return this.grid;
+    }
+
     @Override
     public String toString() {
         String string = "";
