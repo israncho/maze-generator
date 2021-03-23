@@ -59,6 +59,37 @@ public class Box {
     }
 
     /**
+     * Method that returns the points that form the wall whose index is passed as
+     * parameter. Remember indexes of each wall 0 = Above. 1 = Right. 2 = Below. 3 =
+     * Left.
+     * 
+     * @param wallIndex -- int - index of the wall we're verifying.
+     * @return Point[] -- Array with the two points of the wall.
+     */
+    public Point[] getWallPoints(int wallIndex) {
+        if (wallIndex < 0 || wallIndex > 3)
+            throw new IllegalArgumentException("Wrong wall index number try using a number in [0,3].");
+        Point[] wallPoints = new Point[2];
+        if (wallIndex == 0) {
+            wallPoints[0] = this.verticesOfTheBox[0];
+            wallPoints[1] = this.verticesOfTheBox[1];
+        }
+        if (wallIndex == 1) {
+            wallPoints[0] = this.verticesOfTheBox[1];
+            wallPoints[1] = this.verticesOfTheBox[3];
+        }
+        if (wallIndex == 2) {
+            wallPoints[0] = this.verticesOfTheBox[2];
+            wallPoints[1] = this.verticesOfTheBox[3];
+        }
+        if (wallIndex == 3) {
+            wallPoints[0] = this.verticesOfTheBox[0];
+            wallPoints[1] = this.verticesOfTheBox[2];
+        }
+        return wallPoints;
+    }
+
+    /**
      * Method to set the walls value of a box. Remember indexes of each wall 0 =
      * Above. 1 = Right. 2 = Below. 3 = Left.
      * 
