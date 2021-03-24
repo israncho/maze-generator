@@ -166,13 +166,6 @@ public class Box {
         return true;
     }
 
-    /**
-     * Private method to verify if four points have square form.
-     * 
-     * @param points -- Point[] - array of points to verify.
-     * @return boolean -- true if the point have square form and false in other
-     *         case.
-     */
     private boolean hasSquareForm(Point[] points) {
         return points[0].getY() == points[1].getY() && points[2].getY() == points[3].getY()
                 && points[0].getX() == points[2].getX() && points[1].getX() == points[3].getX();
