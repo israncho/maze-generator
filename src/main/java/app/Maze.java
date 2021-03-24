@@ -132,6 +132,44 @@ public class Maze {
         return isNextBoxUsed(box, 0) && isNextBoxUsed(box, 1) && isNextBoxUsed(box, 2) && isNextBoxUsed(box, 3);
     }
 
+    /**
+     * Private method that models the behavior of movement and erasement of walls.
+     * 
+     * @param box -- box from which moving.
+     * @return Box -- box to which it moved.
+     */
+    private Box movement(Box box) {
+        if (box == null)
+            throw new IllegalArgumentException("Error. null pointer in movement(box).");
+        int[] parameterBoxPosition = box.getPosition();
+        int row = parameterBoxPosition[0];
+        int column = parameterBoxPosition[1];
+        int movement = randomMove(box);
+        Box aux = null;
+        if (movement == 0) {
+            box.setWall(0, false);
+            aux = this.grid[row - 1][column];
+            aux.setWall(2, false);
+        }
+        if (movement == 1) {
+            box.setWall(1, false);
+            aux = this.grid[row][column + 1];
+            aux.setWall(3, false);
+        }
+        if (movement == 2) {
+            box.setWall(2, false);
+            aux = this.grid[row + 1][column];
+            aux.setWall(0, false);
+        }
+        if (movement == 3) {
+            box.setWall(3, false);
+            aux = this.grid[row][column - 1];
+            aux.setWall(1, false);
+        }
+        aux.use();
+        return aux;
+    }
+
     @Override
     public String toString() {
         String string = "";
