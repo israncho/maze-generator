@@ -1,5 +1,8 @@
 package app;
 
+import java.util.LinkedList;
+import java.util.Random;
+
 /**
  * Class that models the behavior of a square shaped maze.
  * 
@@ -70,25 +73,50 @@ public class Maze {
         int column = boxPosition[1];
         if (directionNextBox == 0) {
             if (row == 0)
-                return false;
+                return true;
             return this.grid[row - 1][column].isUsed();
         }
         if (directionNextBox == 1) {
             if (column == this.grid[column].length - 1)
-                return false;
+                return true;
             return this.grid[row][column + 1].isUsed();
         }
         if (directionNextBox == 2) {
             if (row == this.grid.length - 1)
-                return false;
+                return true;
             return this.grid[row + 1][column].isUsed();
         }
         if (directionNextBox == 3) {
             if (column == 0)
-                return false;
+                return true;
             return this.grid[row][column - 1].isUsed();
         }
         return false;
+    }
+
+    /**
+     * Private method that returns a movement depending on the adjacent boxes of the
+     * box passed as parameter.
+     * 
+     * 0 = Up. 1 = Right. 2 = Down. 3 = Left.
+     * 
+     * @param box -- box from which we will move.
+     * @return int -- movement. 
+     */
+    private int randomMove(Box box) {
+        if (box == null)
+            throw new IllegalArgumentException("Error. null pointer in randomMove(box).");
+        Random random = new Random();
+        LinkedList<Integer> movements = new LinkedList<>();
+        if (!isNextBoxUsed(box, 0))
+            movements.addLast(0);
+        if (!isNextBoxUsed(box, 1))
+            movements.addLast(1);
+        if (!isNextBoxUsed(box, 2))
+            movements.addLast(2);
+        if (!isNextBoxUsed(box, 3))
+            movements.addLast(3);
+        return movements.get(random.nextInt(movements.size()));
     }
 
     @Override
