@@ -57,7 +57,6 @@ public class Main extends PApplet {
                 System.out.println("----Error, the argument is not an integer----");
                 System.out.println(e.getMessage());
             }
-        // System.out.println(Main.maze.toString());
         if (canExecute)
             PApplet.main(Main.class.getName());
     }

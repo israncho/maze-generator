@@ -18,7 +18,7 @@ public class Box {
      * Lower Right
      */
     private Point[] verticesOfTheBox;
-    /** tuple of integers representing position [x,y] */
+    /** tuple of integers representing position [row,column] */
     private int[] position;
 
     /**
