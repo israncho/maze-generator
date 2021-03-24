@@ -101,7 +101,7 @@ public class Maze {
      * 0 = Up. 1 = Right. 2 = Down. 3 = Left.
      * 
      * @param box -- box from which we will move.
-     * @return int -- movement. 
+     * @return int -- movement.
      */
     private int randomMove(Box box) {
         if (box == null)
@@ -117,6 +117,19 @@ public class Maze {
         if (!isNextBoxUsed(box, 3))
             movements.addLast(3);
         return movements.get(random.nextInt(movements.size()));
+    }
+
+    /**
+     * Private method that returns a boolean depending if all the adjacent boxes of
+     * the box passed as parameter are used.
+     * 
+     * @param box -- box to verify.
+     * @return boolean -- true if all adjacent boxes are used and false if not.
+     */
+    private boolean allAdjacentUsed(Box box) {
+        if (box == null)
+            throw new IllegalArgumentException("Error. null pointer in allAdjacentUsed(box).");
+        return isNextBoxUsed(box, 0) && isNextBoxUsed(box, 1) && isNextBoxUsed(box, 2) && isNextBoxUsed(box, 3);
     }
 
     @Override
