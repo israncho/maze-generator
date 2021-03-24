@@ -51,46 +51,6 @@ public class Maze {
         return this.grid;
     }
 
-    /**
-     * Private method that given a box and a direction tells us if the next adjacent
-     * box in that direction it was already used.
-     *
-     * 0 = Up. 1 = Right. 2 = Down. 3 = Left.
-     * 
-     * @param box              -- box in the maze.
-     * @param directionNextBox -- direction of the next adyacent box.
-     * @return boolean -- true if the box was already used and false if not.
-     */
-    private boolean isNextBoxUsed(Box box, int directionNextBox) {
-        if (directionNextBox < 0 || directionNextBox > 3)
-            throw new IllegalArgumentException("The only allowed values are between 0 and 3.");
-        // [row,column] - coordinates of the box in the maze
-        int[] boxPosition = box.getPosition();
-        int row = boxPosition[0];
-        int column = boxPosition[1];
-        if (directionNextBox == 0) {
-            if (row == 0)
-                return false;
-            return this.grid[row - 1][column].isUsed();
-        }
-        if (directionNextBox == 1) {
-            if (column == this.grid[column].length - 1)
-                return false;
-            return this.grid[row][column + 1].isUsed();
-        }
-        if (directionNextBox == 2) {
-            if (row == this.grid.length - 1)
-                return false;
-            return this.grid[row + 1][column].isUsed();
-        }
-        if (directionNextBox == 3) {
-            if (column == 0)
-                return false;
-            return this.grid[row][column - 1].isUsed();
-        }
-        return false;
-    }
-
     @Override
     public String toString() {
         String string = "";
