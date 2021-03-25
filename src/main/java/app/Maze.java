@@ -2,6 +2,7 @@ package app;
 
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.Stack;
 
 /**
  * Class that models the behavior of a square shaped maze.
@@ -168,6 +169,26 @@ public class Maze {
         }
         aux.use();
         return aux;
+    }
+
+    /**
+     * Method that generates the maze creating all the paths randomly.
+     */
+    public void generateMaze() {
+        Stack<Box> stack = new Stack<>();
+        Random random = new Random();
+        int randomRow = random.nextInt(this.grid.length);
+        int randomColumn = random.nextInt(this.grid[randomRow].length);
+        Box startBox = this.grid[randomRow][randomColumn];
+        startBox.use();
+        stack.push(startBox);
+        while (!stack.isEmpty()) {
+            Box aux = stack.peek();
+            if (allAdjacentUsed(aux))
+                stack.pop();
+            else
+                stack.push(movement(aux));
+        }
     }
 
     @Override

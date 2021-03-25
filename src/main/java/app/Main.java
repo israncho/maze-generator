@@ -29,6 +29,7 @@ public class Main extends PApplet {
      * Method that draws the maze.
      */
     public void drawMaze() {
+        this.maze.generateMaze();
         Box[][] grid = this.maze.getGrid();
         for (int i = 0; i < grid.length; i++)
             for (int j = 0; j < grid.length; j++)
