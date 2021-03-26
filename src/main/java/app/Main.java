@@ -2,10 +2,21 @@ package app;
 
 import processing.core.PApplet;
 
+/**
+ * Main class that executes the program.
+ * 
+ * @author Jesus Israel Gutierrez Elizalde
+ * @version 1.0
+ */
 public class Main extends PApplet {
 
     private Maze maze;
 
+    /**
+     * Constructor with parameters of a main object.
+     * 
+     * @param mazeSize -- int - size of the square shaped maze.
+     */
     public Main(int mazeSize) {
         this.maze = new Maze(mazeSize, 500);
     }
