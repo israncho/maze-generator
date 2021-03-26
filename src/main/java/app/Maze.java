@@ -27,7 +27,8 @@ public class Maze {
         if (planeSize < 1)
             throw new IllegalArgumentException("The plane size must be at least 1.");
         this.grid = new Box[gridSize][gridSize];
-        float wallSizePerBox = planeSize / gridSize;
+        float wallSizePerBox = planeSize / (float) gridSize;
+        //System.out.println(wallSizePerBox);
         float xAxis = 0;
         float yAxis = 0;
         for (int i = 0; i < grid.length; i++) {
