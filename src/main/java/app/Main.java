@@ -52,25 +52,29 @@ public class Main extends PApplet {
         String argMazeSize = "";
         boolean canExecute = true;
         int mazeSize = 0;
+        String[] sketchArgs = { "Maze" };
+        Main myMain = null;
         try {
             argMazeSize = args[0];
         } catch (Exception e) {
             canExecute = false;
             System.out.println("----Error in first argument----");
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + "\n");
+        }
+        try {
+            mazeSize = Integer.parseInt(argMazeSize);
+        } catch (Exception e) {
+            canExecute = false;
+            System.out.println("----Error, the argument is not an integer----");
+            System.out.println(e.getMessage() + "\n");
+        }
+        try {
+            myMain = new Main(mazeSize);
+        } catch (Exception e) {
+            canExecute = false;
+            System.out.println("----Error----\n" + e.getMessage() + "\n");
         }
         if (canExecute)
-            try {
-                mazeSize = Integer.parseInt(argMazeSize);
-            } catch (Exception e) {
-                canExecute = false;
-                System.out.println("----Error, the argument is not an integer----");
-                System.out.println(e.getMessage());
-            }
-        if (canExecute) {
-            Main myMain = new Main(mazeSize);
-            String[] sketchArgs = { "Maze" };
             PApplet.runSketch(sketchArgs, myMain);
-        }
     }
 }
