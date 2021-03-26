@@ -49,4 +49,4 @@ To generate the maze press ENTER
 | <img src="/img/mazeGenerated1.png" width="50%"> | 
 |:--:|
 ---------------------------------------------------
-You can exit the program by pressing the key 'p' or ESC.
+You can exit the program by pressing the key 'q' or ESC.
