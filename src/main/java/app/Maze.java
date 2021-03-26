@@ -23,12 +23,12 @@ public class Maze {
      */
     public Maze(int gridSize, int planeSize) {
         if (gridSize < 1)
-            throw new IllegalArgumentException("The grid size must be at least 1.");
+            throw new IllegalArgumentException("The maze (grid) size must be at least 1.");
         if (planeSize < 1)
             throw new IllegalArgumentException("The plane size must be at least 1.");
         this.grid = new Box[gridSize][gridSize];
-        float wallSizePerBox = planeSize / (float) gridSize;
-        //System.out.println(wallSizePerBox);
+        float wallSizePerBox = planeSize / (float) gridSize; // cast because we want a float, not an integer.
+        // System.out.println(wallSizePerBox);
         float xAxis = 0;
         float yAxis = 0;
         for (int i = 0; i < grid.length; i++) {
