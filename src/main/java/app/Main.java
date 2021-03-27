@@ -11,6 +11,7 @@ import processing.core.PApplet;
 public class Main extends PApplet {
 
     private Maze maze;
+    private int mazeSize;
 
     /**
      * Constructor with parameters of a main object.
@@ -19,6 +20,7 @@ public class Main extends PApplet {
      */
     public Main(int mazeSize) {
         this.maze = new Maze(mazeSize, 500);
+        this.mazeSize = mazeSize;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class Main extends PApplet {
 
     @Override
     public void setup() {
-
+        background(255);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class Main extends PApplet {
      * Method that draws the maze.
      */
     public void drawMaze() {
-        this.maze.generateMaze();
+        background(255);
         Box[][] grid = this.maze.getGrid();
         for (int i = 0; i < grid.length; i++)
             for (int j = 0; j < grid.length; j++)
@@ -55,8 +57,13 @@ public class Main extends PApplet {
     public void keyPressed() {
         if (key == 'q' || key == 'Q')
             exit();
-        if (key == ENTER)
+        if (key == ENTER) {
+            if (this.maze.getStateOfTheMaze() == 1)
+                this.maze = new Maze(this.mazeSize, 500);
+            if (this.maze.getStateOfTheMaze() == 0)
+                this.maze.generateMaze();
             drawMaze();
+        }
     }
 
     public static void main(String[] args) {

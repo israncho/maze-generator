@@ -13,6 +13,8 @@ import java.util.Stack;
 public class Maze {
 
     private Box[][] grid;
+    /** 0 = untouched grid, 1 = maze generated, 2 = maze solved */
+    private int stateOfTheMaze;
 
     /**
      * Constructor with parameters of a maze. Creates the grid in which we will
@@ -45,6 +47,7 @@ public class Maze {
             xAxis = 0;
             yAxis += wallSizePerBox;
         }
+        this.stateOfTheMaze = 0;
     }
 
     /**
@@ -54,6 +57,17 @@ public class Maze {
      */
     public Box[][] getGrid() {
         return this.grid;
+    }
+
+    /**
+     * Method that returns the current state of the maze.
+     * 
+     * 0 = untouched grid, 1 = maze generated, 2 = maze solved
+     * 
+     * @return int -- Current state of the maze.
+     */
+    public int getStateOfTheMaze() {
+        return this.stateOfTheMaze;
     }
 
     /**
@@ -190,6 +204,7 @@ public class Maze {
             else
                 stack.push(movement(aux));
         }
+        this.stateOfTheMaze++;
     }
 
     @Override
