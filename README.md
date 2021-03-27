@@ -9,26 +9,27 @@ To make sure that you have all necessary run the following commands,
 and if generates some similar output then all is ready to go.
 ```
 $ java -version
-openjdk version "11.0.10" 2021-01-19
-OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.10+9)
-OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.10+9, mixed mode)
+openjdk 11.0.8 2020-07-14
+OpenJDK Runtime Environment (build 11.0.8+10-post-Ubuntu-0ubuntu120.04)
+OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Ubuntu-0ubuntu120.04, mixed mode, sharing)
 ```
 
 ```
 $ gradle -v
 
-------------------------------------------------------------
-Gradle 6.6.1
-------------------------------------------------------------
+------------------------------------------------------------          
+Gradle 6.6.1                                                          
+------------------------------------------------------------          
 
-Build time:   2020-08-25 16:29:12 UTC
-Revision:     f3d1fb54a951d8b17d25748e4713bec5d128d7e3
+Build time:   2019-01-10 23:05:02 UTC                                 
+Revision:     3c9abb645fb83932c44e8610642393ad62116807                
 
-Kotlin:       1.3.72
-Groovy:       2.5.12
-Ant:          Apache Ant(TM) version 1.10.8 compiled on May 10 2020
-JVM:          11.0.10 (AdoptOpenJDK 11.0.10+9)
-OS:           Linux 5.8
+Kotlin DSL:   1.1.1                                                   
+Kotlin:       1.3.11                                                  
+Groovy:       2.5.4                                                   
+Ant:          Apache Ant(TM) version 1.9.13 compiled on July 10 2018  
+JVM:          10.0.2 (openjdk 11.0.8)                 
+OS:           Linux 
 ```
 
 ## How to use it
