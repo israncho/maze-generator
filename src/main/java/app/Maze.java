@@ -15,6 +15,9 @@ public class Maze {
     private Box[][] grid;
     /** 0 = untouched grid, 1 = maze generated, 2 = maze solved */
     private int stateOfTheMaze;
+    private Box startBox;
+    private Box endBox;
+    private float wallSizePerBox;
 
     /**
      * Constructor with parameters of a maze. Creates the grid in which we will
@@ -29,7 +32,7 @@ public class Maze {
         if (planeSize < 1)
             throw new IllegalArgumentException("The plane size must be at least 1.");
         this.grid = new Box[gridSize][gridSize];
-        float wallSizePerBox = planeSize / (float) gridSize; // cast because we want a float, not an integer.
+        this.wallSizePerBox = planeSize / (float) gridSize; // cast because we want a float, not an integer.
         // System.out.println(wallSizePerBox);
         float xAxis = 0;
         float yAxis = 0;
@@ -37,17 +40,21 @@ public class Maze {
             for (int j = 0; j < grid.length; j++) {
                 Point[] verticesNewBox = new Point[4];
                 verticesNewBox[0] = new Point(xAxis, yAxis);
-                verticesNewBox[1] = new Point(xAxis + wallSizePerBox, yAxis);
-                verticesNewBox[2] = new Point(xAxis, yAxis + wallSizePerBox);
-                verticesNewBox[3] = new Point(xAxis + wallSizePerBox, yAxis + wallSizePerBox);
+                verticesNewBox[1] = new Point(xAxis + this.wallSizePerBox, yAxis);
+                verticesNewBox[2] = new Point(xAxis, yAxis + this.wallSizePerBox);
+                verticesNewBox[3] = new Point(xAxis + this.wallSizePerBox, yAxis + this.wallSizePerBox);
                 int[] position = { i, j };
                 this.grid[i][j] = new Box(verticesNewBox, position);
-                xAxis += wallSizePerBox;
+                xAxis += this.wallSizePerBox;
             }
             xAxis = 0;
             yAxis += wallSizePerBox;
         }
         this.stateOfTheMaze = 0;
+        this.startBox = this.grid[0][0];
+        this.endBox = this.grid[this.grid.length - 1][this.grid[0].length - 1];
+        this.startBox.setAsSolution();
+        this.endBox.setAsSolution();
     }
 
     /**
@@ -68,6 +75,15 @@ public class Maze {
      */
     public int getStateOfTheMaze() {
         return this.stateOfTheMaze;
+    }
+
+    /**
+     * Method that returns the wall size per box in the maze.
+     * 
+     * @return float -- wall size per box.
+     */
+    public float getWallSizePerBox() {
+        return this.wallSizePerBox;
     }
 
     /**

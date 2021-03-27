@@ -43,14 +43,23 @@ public class Main extends PApplet {
      */
     public void drawMaze() {
         background(255);
+        float wallSizePerBox = this.maze.getWallSizePerBox();
         Box[][] grid = this.maze.getGrid();
         for (int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid.length; j++)
+            for (int j = 0; j < grid.length; j++) {
+                if (grid[i][j].isSolution()) {
+                    Point[] vertices = grid[i][j].getVerticesOfTheBox();
+                    fill(255, 0, 0);
+                    noStroke();
+                    rect(vertices[0].getX(), vertices[0].getY(), wallSizePerBox, wallSizePerBox);
+                }
                 for (int k = 0; k < 4; k++)
                     if (grid[i][j].getWall(k)) {
                         Point[] points = grid[i][j].getWallPoints(k);
+                        stroke(0);
                         line(points[0].getX(), points[0].getY(), points[1].getX(), points[1].getY());
                     }
+            }
     }
 
     @Override
