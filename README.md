@@ -10,8 +10,8 @@ and if generates some similar output then all is ready to go.
 ```
 $ java -version
 openjdk 11.0.8 2020-07-14
-OpenJDK Runtime Environment (build 11.0.8+10-post-Ubuntu-0ubuntu120.04)
-OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Ubuntu-0ubuntu120.04, mixed mode, sharing)
+OpenJDK Runtime Environment (build 11.0.8+10)
+OpenJDK 64-Bit Server VM (build 11.0.8+10, mixed mode, sharing)
 ```
 
 ```
