@@ -49,7 +49,7 @@ public class Main extends PApplet {
             for (int j = 0; j < grid.length; j++) {
                 if (grid[i][j].isSolution()) {
                     Point[] vertices = grid[i][j].getVerticesOfTheBox();
-                    fill(255, 0, 0);
+                    fill(255, 150, 150);
                     noStroke();
                     rect(vertices[0].getX(), vertices[0].getY(), wallSizePerBox, wallSizePerBox);
                 }
