@@ -1,6 +1,7 @@
 package app;
 
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
 
@@ -99,6 +100,8 @@ public class Maze {
     private boolean isNextBoxUsed(Box box, int directionNextBox) {
         if (directionNextBox < 0 || directionNextBox > 3)
             throw new IllegalArgumentException("The only allowed values are between 0 and 3.");
+        if (box == null)
+            throw new IllegalArgumentException("Error. Null pointer in isNextBoxUsed().");
         // [row,column] - coordinates of the box in the maze
         int[] boxPosition = box.getPosition();
         int row = boxPosition[0];
@@ -137,7 +140,7 @@ public class Maze {
      */
     private int randomMove(Box box) {
         if (box == null)
-            throw new IllegalArgumentException("Error. null pointer in randomMove(box).");
+            throw new IllegalArgumentException("Error. Null pointer in randomMove(box).");
         Random random = new Random();
         LinkedList<Integer> movements = new LinkedList<>();
         if (!isNextBoxUsed(box, 0))
@@ -219,6 +222,48 @@ public class Maze {
                 stack.pop();
             else
                 stack.push(movement(aux));
+        }
+        this.stateOfTheMaze++;
+    }
+
+    private LinkedList<Box> movementWithWalls(Box box) {
+        if (box == null)
+            throw new IllegalArgumentException("Error. null pointer in movement(box).");
+        LinkedList<Box> posibleMovements = new LinkedList<>();
+        int[] positionOfTheBox = box.getPosition();
+        int row = positionOfTheBox[0];
+        int column = positionOfTheBox[1];
+        if (!box.getWall(0))
+            posibleMovements.addLast(this.grid[row - 1][column]);
+        if (!box.getWall(1))
+            posibleMovements.addLast(this.grid[row][column + 1]);
+        if (!box.getWall(2))
+            posibleMovements.addLast(this.grid[row + 1][column]);
+        if (!box.getWall(3))
+            posibleMovements.addLast(this.grid[row][column - 1]);
+        return posibleMovements;
+    }
+
+    public void generateSolution() {
+        Queue<Box> queue = new LinkedList<>();
+        queue.add(this.startBox);
+        boolean notFinished = true;
+        while (notFinished) {
+            Box aux = queue.peek();
+            LinkedList<Box> movements = movementWithWalls(aux);
+            movements.remove(aux.getPrevious());
+            for (Box box : movements) {
+                box.setPrevious(aux);
+                queue.add(box);
+                if (box.equals(this.endBox))
+                    notFinished = false;
+            }
+            queue.remove();
+        }
+        Box anotherAux = this.endBox;
+        while (!anotherAux.equals(this.startBox)) {
+            anotherAux.setAsSolution();
+            anotherAux = anotherAux.getPrevious();
         }
         this.stateOfTheMaze++;
     }

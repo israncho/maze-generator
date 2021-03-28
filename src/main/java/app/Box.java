@@ -20,6 +20,26 @@ public class Box {
     private Point[] verticesOfTheBox;
     /** tuple of integers representing position [row,column] */
     private int[] position;
+    /** box that queued it */
+    private Box previous;
+
+    /**
+     * Method that returns the box that queued the box that calls the method.
+     * 
+     * @return Box -- box that queued it.
+     */
+    public Box getPrevious() {
+        return this.previous;
+    }
+
+    /**
+     * Method to set the box that queued the box that calls the method.
+     * 
+     * @param previous -- Box that that queued it.
+     */
+    public void setPrevious(Box previous) {
+        this.previous = previous;
+    }
 
     /**
      * Constructor by parameters of a box.

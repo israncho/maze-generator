@@ -67,8 +67,10 @@ public class Main extends PApplet {
         if (key == 'q' || key == 'Q')
             exit();
         if (key == ENTER) {
-            if (this.maze.getStateOfTheMaze() == 1)
+            if (this.maze.getStateOfTheMaze() == 2)
                 this.maze = new Maze(this.mazeSize, 500);
+            if (this.maze.getStateOfTheMaze() == 1)
+                this.maze.generateSolution();
             if (this.maze.getStateOfTheMaze() == 0)
                 this.maze.generateMaze();
             drawMaze();
