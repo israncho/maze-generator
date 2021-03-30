@@ -226,6 +226,14 @@ public class Maze {
         this.stateOfTheMaze++;
     }
 
+    /**
+     * Private method that models the behavior of a posible movement in the maze
+     * that has been generated. Posible moves are the normal moves in a maze,
+     * depending on the walls.
+     * 
+     * @param box -- box from which it moves.
+     * @return LinkedList<Box> -- list of posible moves.
+     */
     private LinkedList<Box> movementWithWalls(Box box) {
         if (box == null)
             throw new IllegalArgumentException("Error. null pointer in movement(box).");
@@ -244,6 +252,9 @@ public class Maze {
         return posibleMovements;
     }
 
+    /**
+     * Method that generates the solution of a generated maze.
+     */
     public void generateSolution() {
         Queue<Box> queue = new LinkedList<>();
         queue.add(this.startBox);
