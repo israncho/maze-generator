@@ -24,24 +24,6 @@ public class Box {
     private Box previous;
 
     /**
-     * Method that returns the box that queued the box that calls the method.
-     * 
-     * @return Box -- box that queued it.
-     */
-    public Box getPrevious() {
-        return this.previous;
-    }
-
-    /**
-     * Method to set the box that queued the box that calls the method.
-     * 
-     * @param previous -- Box that that queued it.
-     */
-    public void setPrevious(Box previous) {
-        this.previous = previous;
-    }
-
-    /**
      * Constructor by parameters of a box.
      * 
      * @param verticesOfTheBox -- array of points that will be the vertices of the
@@ -121,6 +103,24 @@ public class Box {
         if (wallIndex < 0 || wallIndex > 3)
             throw new IllegalArgumentException("Wrong wall index number try using a number in [0,3].");
         this.walls[wallIndex] = newValueOfTheWall;
+    }
+
+    /**
+     * Method that returns the box that queued the box that calls the method.
+     * 
+     * @return Box -- box that queued it.
+     */
+    public Box getPrevious() {
+        return this.previous;
+    }
+
+    /**
+     * Method to set the box that queued the box that calls the method.
+     * 
+     * @param previous -- Box that that queued it.
+     */
+    public void setPrevious(Box previous) {
+        this.previous = previous;
     }
 
     /**
