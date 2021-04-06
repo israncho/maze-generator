@@ -41,13 +41,14 @@ gradle run -PappArgs="['20']"
 Where 20 is the size of the maze, you can change it for your desired 
 size, but values bigger than 250 won't work as fine as smaller sizes.
 
-Once executed you'll get a blank box.
-| <img src="/img/blankCanvas.png" width="50%"> | 
+Once executed you'll get a maze.
+| <img src="/img/maze.png" width="50%"> | 
 |:--:|
 ---------------------------------------------------
-To generate the maze press ENTER
+To solve the maze press ENTER.
 
-| <img src="/img/mazeGenerated1.png" width="50%"> | 
+| <img src="/img/solvedMaze.png" width="50%"> | 
 |:--:|
 ---------------------------------------------------
+You can generate more mazes and solve them by pressing ENTER.
 You can exit the program by pressing the key 'q' or ESC.
