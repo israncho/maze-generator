@@ -209,6 +209,8 @@ public class Maze {
      * Method that generates the maze creating all the paths randomly.
      */
     public void generateMaze() {
+        if (this.stateOfTheMaze != 0)
+            throw new IllegalArgumentException("To generate the maze the state of it must be \"untouched grid\".");
         Stack<Box> stack = new Stack<>();
         Random random = new Random();
         int randomRow = random.nextInt(this.grid.length);
@@ -256,6 +258,8 @@ public class Maze {
      * Method that generates the solution of a generated maze.
      */
     public void generateSolution() {
+        if (this.stateOfTheMaze != 1)
+            throw new IllegalArgumentException("To generate the maze the state of it must be \"generated maze\".");
         Queue<Box> queue = new LinkedList<>();
         queue.add(this.startBox);
         boolean notFinished = true;
