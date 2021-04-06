@@ -30,7 +30,8 @@ public class Main extends PApplet {
 
     @Override
     public void setup() {
-        background(255);
+        this.maze.generateMaze();
+        drawMaze();
     }
 
     @Override
